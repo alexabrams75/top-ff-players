@@ -2,14 +2,17 @@ import React from 'react';
 import PlayerList from './PlayerList';
 import nfl from '../api/nfl';
 
+const season = 2018;
+const week = 6;
+
 class App extends React.Component {
   state = { playersObj: {}, players: [], loading: true };
 
   loadPlayerList = async () => {
     const response = await nfl.get('/players/weekstats', {
       params: {
-        season: 2018,
-        week: 6,
+        season: season,
+        week: week,
         positionCategories: 'O',
       },
     });
