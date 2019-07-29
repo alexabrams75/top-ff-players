@@ -30,7 +30,7 @@ class App extends React.Component {
   render() {
     if (!this.state.loading) {
       return (
-        <div>
+        <div className="ui container">
           <PlayerList players={this.state.playersObj} />
         </div>
       );
