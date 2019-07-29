@@ -1,28 +1,27 @@
 import React from 'react';
-import nfl from '../api/nfl';
+import PlayerItem from './PlayerItem';
 
-class PlayerList extends React.Component {
-  state = { players: {} };
+var year = 2018;
+var week = 6;
 
-  loadPlayerList = async () => {
-    const response = await nfl.get('/players/weekstats', {
-      params: {
-        season: 2017,
-        week: 6,
-        positionCategories: 'O',
-      },
-    });
-    this.setState({ players: response.data.games[102019].players });
-    console.log(this.state.players[310].stats.week[2017][6]);
-  };
+const PlayerList = props => {
+  const playerArr = Object.entries(props.players);
+  playerArr.sort(
+    (a, b) => b[1].stats.week[year][week].pts - a[1].stats.week[year][week].pts
+  );
+  const renderedList = playerArr.map(player => {
+    console.log(player);
+    return (
+      <PlayerItem
+        key={player[0]}
+        playerId={player[0]}
+        stats={player[1].stats.week[year][week]}
+      />
+    );
+  });
 
-  componentDidMount() {
-    this.loadPlayerList();
-  }
-
-  render() {
-    return <div>List</div>;
-  }
-}
+  // console.log(playerArr);
+  return <div className="ui relaxed divided list">{renderedList}</div>;
+};
 
 export default PlayerList;
