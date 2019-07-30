@@ -1,6 +1,7 @@
 import React from 'react';
 import cheerio from 'cheerio';
 import axios from 'axios';
+import './PlayerItem.css';
 
 class PlayerItem1 extends React.Component {
   state = {
@@ -9,6 +10,10 @@ class PlayerItem1 extends React.Component {
     playerNum: '',
     playerId: this.props.playerId,
     playerPic: '',
+    passTD: 0,
+    rushTD: 0,
+    recTD: 0,
+    int: 0,
   };
 
   loadPlayerInfo = async () => {
@@ -18,12 +23,21 @@ class PlayerItem1 extends React.Component {
     this.setState({
       playerName: $('.player-name').text(),
       playerNum: $('.player-number').text(),
+      playerPic: $('.player-photo > img').attr('src'),
     });
-    console.log($('.player-name').text());
   };
 
   componentDidMount() {
     this.loadPlayerInfo();
+    if (this.props.stats[6]) {
+      this.setState({ passTD: this.props.stats[6] });
+    }
+    if (this.props.stats[15]) {
+      this.setState({ rushTD: this.props.stats[15] });
+    }
+    if (this.props.stats[22]) {
+      this.setState({ recTD: this.props.stats[22] });
+    }
   }
 
   render() {
@@ -32,8 +46,42 @@ class PlayerItem1 extends React.Component {
 
     return (
       <div className="item">
-        <div className="player-name">{this.state.playerName}</div>
-        <div>Pts: {points}</div>
+        <img
+          className="ui image player-pic"
+          src={this.state.playerPic}
+          alt={this.state.playerName}
+        />
+        <div className="content">
+          <div className="player-name header">
+            {this.state.playerName.trim()}&nbsp;-&nbsp;{this.state.playerNum}
+          </div>
+          <div className="description">
+            {/* If pass stats */}
+            {this.props.stats[5] ? (
+              <div class="passing-stats">
+                <p>
+                  Passing Yards: {this.props.stats[5]} - Passing TDs:{' '}
+                  {this.state.passTD} - Int: {this.state.int}
+                </p>
+              </div>
+            ) : null}
+            {/* If rush stats */}
+            {this.props.stats[14] ? (
+              <div className="rush-stats">
+                Rushing Yards: {this.props.stats[14]} - Rushing TDs:{' '}
+                {this.state.rushTD}
+              </div>
+            ) : null}
+            {/* If Rec stats */}
+            {this.props.stats[20] ? (
+              <div className="rec-stats">
+                Receptions: {this.props.stats[20]} - Rec Yards:{' '}
+                {this.props.stats[21]} - Rec TDs: {this.state.recTD}
+              </div>
+            ) : null}
+            <div className="points">PPR Fantasy Points: {points}</div>
+          </div>
+        </div>
       </div>
     );
   }

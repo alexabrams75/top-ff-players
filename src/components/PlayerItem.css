@@ -1,0 +1,12 @@
+.player-pic{
+  height: 125px;
+}
+
+body {
+  font-size: 1.5em;
+  line-height: 1.5em;
+}
+
+.points {
+  font-weight: bold;
+}

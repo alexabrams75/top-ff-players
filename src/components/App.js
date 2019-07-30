@@ -3,7 +3,7 @@ import PlayerList from './PlayerList';
 import nfl from '../api/nfl';
 
 const season = 2018;
-const week = 6;
+const week = 10;
 
 class App extends React.Component {
   state = { playersObj: {}, players: [], loading: true };

@@ -3,7 +3,7 @@ import React from 'react';
 import PlayerItem1 from './PlayerItem1';
 
 var year = 2018;
-var week = 6;
+var week = 10;
 
 const PlayerList = props => {
   const playerArr = Object.entries(props.players);
@@ -11,7 +11,7 @@ const PlayerList = props => {
     (a, b) => b[1].stats.week[year][week].pts - a[1].stats.week[year][week].pts
   );
   console.log(playerArr);
-  const renderedList = playerArr.map(player => {
+  const renderedList = playerArr.slice(0, 50).map(player => {
     // console.log(player);
     return (
       <PlayerItem1
