@@ -10,6 +10,7 @@ class PlayerItem1 extends React.Component {
     playerNum: '',
     playerId: this.props.playerId,
     playerPic: '',
+    playerTeam: '',
     passTD: 0,
     rushTD: 0,
     recTD: 0,
@@ -24,6 +25,9 @@ class PlayerItem1 extends React.Component {
       playerName: $('.player-name').text(),
       playerNum: $('.player-number').text(),
       playerPic: $('.player-photo > img').attr('src'),
+      playerTeam: $('.player-team-links > a')
+        .text()
+        .slice(0, -18),
     });
   };
 
@@ -54,6 +58,7 @@ class PlayerItem1 extends React.Component {
         <div className="content">
           <div className="player-name header">
             {this.state.playerName.trim()}&nbsp;-&nbsp;{this.state.playerNum}
+            <div className="player-team">{this.state.playerTeam}</div>
           </div>
           <div className="description">
             {/* If pass stats */}

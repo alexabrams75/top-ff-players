@@ -1,14 +1,12 @@
 import React from 'react';
 // import PlayerItem from './PlayerItem';
 import PlayerItem1 from './PlayerItem1';
-
-var year = 2018;
-var week = 10;
+import { WEEK, YEAR } from './constants';
 
 const PlayerList = props => {
   const playerArr = Object.entries(props.players);
   playerArr.sort(
-    (a, b) => b[1].stats.week[year][week].pts - a[1].stats.week[year][week].pts
+    (a, b) => b[1].stats.week[YEAR][WEEK].pts - a[1].stats.week[YEAR][WEEK].pts
   );
   console.log(playerArr);
   const renderedList = playerArr.slice(0, 50).map(player => {
@@ -17,7 +15,7 @@ const PlayerList = props => {
       <PlayerItem1
         key={player[0]}
         playerId={player[0]}
-        stats={player[1].stats.week[year][week]}
+        stats={player[1].stats.week[YEAR][WEEK]}
       />
     );
   });

@@ -1,0 +1,14 @@
+2: pass attempts
+3: completed passes
+4: incomplete passes
+5: passing yards
+6: passing TD
+7: int ?
+8: sacks taken
+13: rush attempts
+14: rush yards
+15: rush tds
+20: receptions
+21: receiving yards
+22: rec TDs
+pts: points

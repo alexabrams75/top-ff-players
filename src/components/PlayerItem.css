@@ -10,3 +10,9 @@ body {
 .points {
   font-weight: bold;
 }
+
+.player-team {
+  float: right;
+  font-size: .9em;
+  margin-left: 20px;
+}
