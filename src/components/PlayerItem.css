@@ -16,3 +16,15 @@ body {
   font-size: .9em;
   margin-left: 20px;
 }
+
+.week-rank {
+  position: absolute;
+  top: 8px;
+  left: -10px;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.item {
+  position: relative;
+}

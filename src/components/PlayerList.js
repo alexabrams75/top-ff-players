@@ -16,6 +16,7 @@ const PlayerList = props => {
         key={player[0]}
         playerId={player[0]}
         stats={player[1].stats.week[YEAR][WEEK]}
+        num={playerArr.indexOf(player) + 1}
       />
     );
   });

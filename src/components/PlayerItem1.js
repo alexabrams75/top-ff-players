@@ -8,7 +8,6 @@ class PlayerItem1 extends React.Component {
     playerName: '',
     points: this.props.stats.pts,
     playerNum: '',
-    playerId: this.props.playerId,
     playerPic: '',
     playerTeam: '',
     passTD: 0,
@@ -50,6 +49,7 @@ class PlayerItem1 extends React.Component {
 
     return (
       <div className="item">
+        <div className="week-rank">{this.props.num}</div>
         <img
           className="ui image player-pic"
           src={this.state.playerPic}
@@ -63,7 +63,7 @@ class PlayerItem1 extends React.Component {
           <div className="description">
             {/* If pass stats */}
             {this.props.stats[5] ? (
-              <div class="passing-stats">
+              <div className="passing-stats">
                 <p>
                   Passing Yards: {this.props.stats[5]} - Passing TDs:{' '}
                   {this.state.passTD} - Int: {this.state.int}
