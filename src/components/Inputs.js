@@ -1,18 +1,22 @@
 import React from 'react';
+import { WEEK, YEAR } from './constants';
 
 class Inputs extends React.Component {
-  state = { year: 2018, week: 16 };
+  state = { year: YEAR, week: WEEK };
 
   onYearChange = event => {
-    this.setState({ year: event.target.value });
+    var yearInt = parseInt(event.target.value);
+    this.setState({ year: yearInt });
   };
 
   onWeekChange = event => {
-    this.setState({ week: event.target.value });
+    var weekInt = parseInt(event.target.value);
+    this.setState({ week: weekInt });
   };
 
   onFormSubmit = event => {
     event.preventDefault();
+    console.log(this.state.year, this.state.week);
     this.props.onDateSubmit(this.state.year, this.state.week);
   };
 

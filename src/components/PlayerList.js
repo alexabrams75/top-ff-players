@@ -1,7 +1,7 @@
 import React from 'react';
 // import PlayerItem from './PlayerItem';
 import PlayerItem1 from './PlayerItem1';
-// import { WEEK, YEAR } from './constants';
+import { WEEK, YEAR } from './constants';
 // import UpdateState from './UpdateState';
 
 var playerArr = [];
@@ -10,8 +10,7 @@ var renderedList = [];
 class PlayerList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { week: '16', year: '2018', loading: true };
-    // this.UpdateState = UpdateState.bind(this);
+    this.state = { week: WEEK, year: YEAR, loading: true };
   }
 
   renderList = () => {
@@ -32,7 +31,6 @@ class PlayerList extends React.Component {
         />
       );
     });
-    // this.setState({ loading: false });
   };
 
   componentDidMount() {
@@ -47,13 +45,13 @@ class PlayerList extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.state.loading) {
-      this.setState({
-        week: this.props.week,
-        year: this.props.year,
-        loading: false,
-      });
-    }
+    // if (this.state.loading) {
+    //   this.setState({
+    //     week: this.props.week,
+    //     year: this.props.year,
+    //     loading: false,
+    //   });
+    // }
     this.renderList();
   }
 
@@ -61,29 +59,5 @@ class PlayerList extends React.Component {
     return <div className="ui relaxed divided list">{renderedList}</div>;
   }
 }
-
-// const PlayerList = props => {
-//   const playerArr = Object.entries(props.players);
-//   playerArr.sort(
-//     (a, b) =>
-//       b[1].stats.week[props.year][props.week].pts -
-//       a[1].stats.week[props.year][props.week].pts
-//   );
-//   // console.log(playerArr);
-//   const renderedList = playerArr.slice(0, 50).map(player => {
-//     // console.log(player);
-//     return (
-//       <PlayerItem1
-//         key={player[0]}
-//         playerId={player[0]}
-//         stats={player[1].stats.week[props.year][props.week]}
-//         num={playerArr.indexOf(player) + 1}
-//       />
-//     );
-//   });
-//
-//   // console.log(playerArr);
-//   return <div className="ui relaxed divided list">{renderedList}</div>;
-// };
 
 export default PlayerList;

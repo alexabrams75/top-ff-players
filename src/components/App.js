@@ -23,15 +23,16 @@ class App extends React.Component {
   };
 
   onDateSubmit = (year, week) => {
-    this.setState({ loading: true, year: year, week: week });
-    this.loadPlayerList(year, week);
+    this.setState({ loading: true, year: year, week: week }, () =>
+      this.loadPlayerList(year, week)
+    );
   };
 
   componentDidMount() {
     this.loadPlayerList(this.state.year, this.state.week);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     if (this.state.playersObj && this.state.loading) {
       this.setState({ loading: false });
     }
